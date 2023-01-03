@@ -3,5 +3,5 @@ const Caesarcipher = require('./caesarCipher')
 
 test('takes a string and returns each character shifted one', () => {
     const cipher = new Caesarcipher()
-    expect(cipher.createCipher('this is a caesar cipher! isn\'t it?')).toMatch(/uijt jt b dbftbs djqifs! jto\'u ju?/)
+    expect(cipher.createCipher(`This is a caesar cipher! Isn\'t it?`)).toMatch(/Uijt jt b dbftbs djqifs! Jto'u ju?/)
 })

@@ -32,7 +32,11 @@ function Caesarcipher(string) {
         const stringLength = string.length
         for (let i = 0; i < stringLength; i++) {
             let stringCharacter = string.charAt(i)
-            if (!this.alphabet[stringCharacter]) {
+            let lowerCharacter = string.charAt(i).toLowerCase()
+            if (!this.alphabet[stringCharacter] && this.alphabet[lowerCharacter]) {
+                let character = this.alphabet[lowerCharacter]
+                newString += character.toUpperCase()
+             } else if (!this.alphabet[stringCharacter]) {
                 newString += string.charAt(i)
             } else {
             newString += this.alphabet[stringCharacter]
