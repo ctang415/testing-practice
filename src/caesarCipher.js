@@ -1,45 +1,23 @@
-function Caesarcipher(string) {
-    this.alphabet = {
-        a: "b",
-        b: "c",
-        c: "d",
-        d: "e",
-        e: "f",
-        f: "g",
-        g: "h",
-        h: "i",
-        i: "j",
-        j: "k",
-        k: "l",
-        l: "m",
-        m: "n",
-        n: "o",
-        o: "p",
-        p: "q",
-        q: "r",
-        r: "s",
-        s: "t",
-        t: "u",
-        u: "v",
-        v: "w",
-        w: "x",
-        x: "y",
-        y: "z",
-        z: "a"
-    }
-    this.createCipher = (string) => {
+function Caesarcipher() {
+    this.alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    this.createCipher = (string, shift) => {
         let newString = '';
-        const stringLength = string.length
+        let stringLength = string.length
         for (let i = 0; i < stringLength; i++) {
-            let stringCharacter = string.charAt(i)
-            let lowerCharacter = string.charAt(i).toLowerCase()
-            if (!this.alphabet[stringCharacter] && this.alphabet[lowerCharacter]) {
-                let character = this.alphabet[lowerCharacter]
-                newString += character.toUpperCase()
-             } else if (!this.alphabet[stringCharacter]) {
+            if (!this.alphabet.includes(string.charAt(i)) && this.alphabet.includes((string.charAt(i).toLowerCase()))) {
+                let shiftedLowerCaseIndex = this.alphabet.indexOf((string.charAt(i).toLowerCase())) + shift
+                if (shiftedLowerCaseIndex > 25) {
+                    shiftedLowerCaseIndex = shiftedLowerCaseIndex % 26
+                } 
+                newString += this.alphabet[shiftedLowerCaseIndex].toUpperCase()
+            } else if (!this.alphabet.includes(string.charAt(i))  && !this.alphabet.includes(string.charAt(i).toLowerCase())) {
                 newString += string.charAt(i)
-            } else {
-            newString += this.alphabet[stringCharacter]
+            } else if (this.alphabet.indexOf(string.charAt(i)) !== undefined) {
+            let shiftedChar = this.alphabet.indexOf(string.charAt(i)) + shift
+            if (shiftedChar > 25) {
+                shiftedChar = shiftedChar % 26
+            } 
+            newString += this.alphabet[shiftedChar]
             }
         }
         return newString;
