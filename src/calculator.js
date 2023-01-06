@@ -1,15 +1,19 @@
-function Calculator (a, b) {
-    this.add = function (a, b) {
+const Calculator = {
+    add: (a, b) => {
         return a + b
-    }
-    this.subtract = function(a, b) {
+    },
+    subtract: (a, b) => {
         return a - b
-    }
-    this.multiply = function(a, b) {
+    },
+    multiply: (a, b) => {
         return a * b
-    }
-    this.divide = function(a, b) {
+    },
+    divide: (a, b) => {
+        if (b === 0) {
+            return "Can't divide by 0"
+        } else {
         return a/b
+        }
     }
 }
 
